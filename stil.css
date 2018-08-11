@@ -1,0 +1,110 @@
+body {
+   font:95% Georgia; 
+   line-height:1.5em;
+   background:url(background.jpg);
+  -webkit-animation:100s scroll infinite linear;
+  -moz-animation:100s scroll infinite linear;
+  -o-animation:100s scroll infinite linear;
+  -ms-animation:100s scroll infinite linear;
+  animation:100s scroll infinite linear;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+}
+
+
+@-webkit-keyframes scroll{
+  100%{
+    background-position:0px -3000px;
+  }
+}
+
+@-moz-keyframes scroll{
+  100%{
+    background-position:0px -3000px;
+  }
+}
+
+@-o-keyframes scroll{
+  100%{
+    background-position:0px -3000px;
+  }
+}
+
+@-ms-keyframes scroll{
+  100%{
+    background-position:0px -3000px;
+  }
+}
+
+@keyframes scroll{
+  100%{
+    background-position:0px -3000px;
+  }
+}
+
+
+a{
+  color:#154360;
+  text-decoration:none;
+  opacity:0.8;
+  position:relative;
+}
+a:hover{opacity:1;}
+a:active{opacity:1;}
+
+
+p{
+  color:#000000;
+  margin:30px 0 30px 0;
+  position:relative;
+  border-radius:5px;
+  opacity:0.8;
+}
+
+h1,h2,h3,h4 {color:#154360; font-weight:400; position:relative;}
+h1 {font-size:2.5em; line-height:1.2em;}
+h2 {font-size:2em;}
+h3 {font-size:1em; margin:10px 0 15px 20px;}
+h4 {font-size:1em; padding-left:8px; margin:5px;}
+
+
+img {
+   position: relative;
+   width:400px;height:400px;
+   margin: 0 0 0 120px
+}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    resize: vertical;
+}
+
+button {background-color:#e7e7e7; color: black; padding: 12px 20px; margin-left: 20px; border-radius: 4px;}
+button:hover {background-color:#eeeeee;}
+
+#wrap {margin:auto; width:1000px;}
+
+#content {text-align:justify; width:750px;}
+#content p {background:#ECEFF1; padding:15px; box-shadow: #303030 0px 8px 5px;}
+#content h2{padding-top: 60px;}
+
+#sidebar {line-height:1.4em; width:220px; position:fixed; margin-left:800px;}
+#sidebar ul {font-size:1.0em; list-style:none; margin:0; padding:0 0 5px 0;}
+#sidebar li {margin:0 0 10px; padding-left:5px;line-height:1.1em;}
+#sidebar li a {font-size:1.4em;}
+#sidebar ul ul {list-style:circle; line-height:1em; margin-left:12px; padding-left:15px;}
+#sidebar ul ul li a {font-size:1.2em;font-weight:400;}
+#sidebar h2 {font-size:1.8em; margin:20px 0 30px 0;}
+#sidebar h3 {font-size:1.2em; margin:10px 0 15px 0;}
+
+.credits{font-size:1em; color:#424949; margin-top:40px;}
+.contact_form { border-radius: 5px; background:#ECEFF1; padding:15px; box-shadow: #303030 0px 8px 5px; width:660px; margin-bottom: 50px; }
+

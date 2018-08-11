@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="hr" xml:lang="hr">
+<head>
+	<meta charset="utf-8" />
+	<meta name="Content-Script-Type" content="text/javascript">
+	<meta name="description" content="Web stranica izrađena za 2. zadaću iz kolegija Mreze racunala" />
+	<meta name="keywords" content="eliptičke krivulje" />
+	<meta name="author" content="Matej Poletar" />
+	<link rel="stylesheet" type="text/css" href="stil.css" title="First webpage by Matej Poletar" />
+	<script type="text/x-mathjax-config">
+			MathJax.Hub.Config({
+  			tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+			});</script>
+	<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+	<title>Eliptičke krivulje</title>
+</head>
+
+<body>
+	<div id="wrap">
+	<div id="sidebar">
+		<h1><a href="index.html">Eliptičke krivulje</a></h1>
+		<h3>2. zadaća iz kolegija <br/><i>Mreže računala</i></h3>
+		<h2>Sadržaj:</h2>
+		<ul>
+			<li><a href="index.html"> Početna</a></li>
+			<li><a href="index.html#uvod">Uvod</a></li>
+			<li>
+			<ul>
+				<li><a href='index.html#zbrajanje'> Zbrajanje na eliptičkim krivuljama </a></li>
+				<li><a href='index.html#EK_nad_Q'> Eliptičke krivulje nad nad poljem $\mathbb{Q}$ </a></li>
+				<li><a href='index.html#EK_nad_KP'> Eliptičke krivulje nad konačnim poljima </a></li>
+			</ul>
+			</li>
+			<li><a href="index.html#contact">Kontakt</a></li>
+		</ul>
+
+		<h3>Korisni linkovi:</h3>
+		<h4> <a href="https://www.math.pmf.unizg.hr/">PMF-Matematički odsjek</a></h4>
+		<h4> <a href="https://web.math.pmf.unizg.hr/nastava/mreze/index.php">web stranica kolegija <i>Mreže računala</i></a></h4>
+		<h4> <a href="http://www.lmfdb.org/EllipticCurve/">Online baza eliptičkih krivulja</a></h4> <br/>
+		
+		<span class="credits">&copy; 2018 Matej Poletar<br/></span>
+		<br/>
+		 <script>
+			var date = new Date().toLocaleString();
+			document.write ('<span class="credits" id="date-time">', date, '<\/span>')
+			if (document.getElementById) onload = function () {
+			setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 1000);
+			}
+		 </script>
+	</div>
+	
+		
+	<div id="content">
+		<h2>Dobrodošli na web-stranicu <i> Eliptičke krivulje</i>!</h2>
+		<p> Ova web stranica izrađena je u svrhu 2. domaće zadaće iz kolegija <i>Mreže računala</i>.</p>	
+		<h2 id="uvod">Uvod</h2>
+		<p> Neka je $\mathbb{K}$ polje. Eliptička krivulja $E$ nad $\mathbb{K}$ (oznaka: $E(\mathbb{K})$) 
+			je nesingularna projektivna kubna krivulja nad $\mathbb{K}$ s barem jednom $\mathbb{K}$-racionalnom točkom.
+			Opća jednadžba eliptičke krivulje glasi
+			\[ F(x,y)=ax^3+bx^2y+cxy^2+dy^3+ex^2+fxy+gy^2+hx+iy+j=0\]
+			gdje su koeficijenti $a,b,...,j \in \mathbb{K}$, a uvjet nesingularnosti znači da je u svakoj točki na krivulji, 
+			promatranoj u projektivnoj ravnini $\mathbb{P}^2(\overline{\mathbb{K}})$ nad algebarskim
+			zatvorenjem od $\mathbb{K}$, barem jedna derivacija funkcije $F$ različita od $0$, tj. 
+			$(\forall P \in E(\mathbb{K}))\,\, \partial_j F\neq 0 $ za neki $j$. <br/>
+			Svaka takva jednadžba može se biracionalnim transformacijama prevesti u oblik
+			\[ y^3+a_1 xy+a_3 y=x^3+a_2 x^2+a_4 x+a_6\] koji nazivamo (duga) Weierstrassova forma, 
+			a ako je karakteristika polja $\mathbb{K}$ različita od $2$ i $3$ jednadžbu eliptičke krivulje moguće je prikazati u obliku
+			\[ y^2=x^3+ax+b.\] 
+			Zadnju jednadžbu zovemo kratka Weierstrassova forma. 
+			Uvjet nesingularnosti je sada da funkcija $f(x)=x^3+ax+b$ nema višestrukih nultočaka, 
+			a to je ekvivalentno uvjetu da je diskriminanta $\Delta=-16(4a^3+27b^2)$ različita od $0$.
+			U daljnjem ćemo eliptičku krivulju nad poljem $\mathbb{K}$ (karakteristike različite od $2$ i $3$) 
+			smatrati skupom točaka $(x,y) \in \mathbb{K} \times \mathbb{K}$ koji zadovoljavaju jednadžbu 
+			$y^2=x^3+ax+b, \,\, a,b \in \mathbb{K}$ i $(4a^3+27b^2) \neq 0$, zajedno s točkom u beskonačnosti $\mathcal{O}$:
+			\[ E(\mathbb{K})=\{ (x,y)\in \mathbb{K} \times \mathbb{K}\,|\, y^2=x^3+ax+b; \, a,b \in \mathbb{K}, \, (4a^3+27b^2) \neq 0 \} \cup \{\mathcal{O}\}.\]
+			Neka je sada $\mathbb{K}=\mathbb{R}$. Tada eliptičku krivulju $ E(\mathbb{R})$ možemo prikazati kao podskup ravnine 
+			$(E(\mathbb{R})\subseteq \mathbb{R}^2 $). Polinom $f\in \mathbb{R}[x]$ može imati $1\,(\Delta &lt; 0)$ ili $3\,(\Delta &gt; 0)$ realna korijena. 
+			U ovisnosti o tome, graf pripadne eliptičke krivulje će imati jednu ili dvije komponente.
+			</p>												
+		
+		<h2 id ="zbrajanje"> Zbrajanje na eliptičkim krivuljama </h2>
+		<p> Sada ćemo definirati operaciju zbrajanja na $\mathbb{R}(E)$. Neka su $ P,Q \in \mathbb{R}(E)$. 
+		Provucimo pravac kroz točke $P$ i $Q$. Treću točku u kojoj taj pravac siječe krivulju označimo s $P \ast Q$.
+		Sada definiramo zbroj točaka $P+Q$ kao osnosimetričnu točku točki $P \ast Q$ s obzirom na os $x$. 
+		Ako je $P=Q$ onda umjesto sekante provlačimo tangentu kroz točku $P$. Također definiramo $P+\mathcal{O}=\mathcal{O}+P=P$, 
+		$\forall P \in E(\mathbb{R})$.</p>
+		
+
+
+		<img src="graf.svg" style="display:none"  id="graf" alt="Graf">
+	
+		<button onclick="displayPic()"> Prikaži graf</button>
+		<script>
+			function displayPic(){
+				document.getElementById('graf').style.display = 'block';
+			}
+		</script>
+		
+	<p> Zbrajanje točaka na eliptičkoj krivulji možemo opisati eksplicitno formulama: 
+		<br> Neka je $P=(x_1,y_1)$ i $Q=(x_2,y_2)$. Tada je 
+			<br> 1) $-P=(x_1,-y_1)$
+			<br> 2) ako je $ P=-Q$, onda je $P+Q=\mathcal{O}$
+			<br> 3) ako je $ P \neq -Q$, onda je $P+Q=(x_3,y_3)$, gdje su
+		\[ x_3=\lambda^2-x_1-x_2, \, y_3=-y_1+\lambda(x_1-x_3)\]
+		\[\lambda=\begin{cases}
+		&\frac{y_2-y_1}{x_2-x_1}, &\text{ako } x_2\neq x_1,\\
+		&\frac{3x_1^2+a}{2y_!}, &\text{ako } x_2=x_1.
+		\end{cases}\]
+		Može se pokazati da je $(E(\mathbb{R}),+)$ Abelova grupa. </p>
+		
+	<h2 id="EK_nad_Q"> Eliptičke krivulje nad $\mathbb{Q}$ </h2>
+	<p> 
+		Započnimo razmatranja eliptičkih krivulja nad poljem $\mathbb{Q}$ važnim rezultatom.
+		<br><br> <b> Teorem 1. </b> (Mordell-Weil) <i>Grupa $E(\mathbb{Q})$ je konačno generirana Abelova grupa.</i><br>
+		<br> Ovaj rezultat ima za posljedicu da je \[ E(\mathbb{Q}) \cong E(\mathbb{Q})_{tors} \times \mathbb{Z}^r.\]
+		Podgrupa $E(\mathbb{Q})_{tors}$ od $E(\mathbb{Q})$ koja se sastoji od svih točaka konačnog reda naziva se torzijska grupa od $E$,
+		a nenegativni cijeli broj $r$ naziva se rang od $E$.
+		U nastavku se bavimo problemom određivanja torzijske grupe i ranga.
+		<br> Mazur je 1978. godine pokaza da struktura torzijske grupe ne može biti bilo kakva, već postoji 
+		točno 15 mogućih torzijskih grupa za eliptičke krivulje nad poljem racionalnih brojeva. To su sljedeće grupe:
+		\begin{align} \mathbb{Z}_k, & \text{    za } k=1,2,3,4,5,6,7,8,9,10,12 \\\\ \mathbb{Z}_2 \times \mathbb{Z}_k, 
+		& \text{    za } k=2,4,6,8 \end{align}
+		Također vrijedi sljedeći teorem.
+		<br><br> <b> Teorem 2. </b> (Lutz-Nagel) <i> Neka je $E$ eliptička krivulja zadana jednadžbom 
+		\[ y^2=f(x)=x^3+ax^2+bx+c,\] gdje su $a,b,c \in \mathbb{Z}$ . Ako je $P=(x_1,y_1)$ točka konačnog reda u $E(\mathbb{Q})$, 
+		tada su $x_1,y_1 \in \mathbb{Z}$. </i>
+	</p>
+	
+	<h2 id="EK_nad_KP"> Eliptičke krivulje nad konačnim poljima </h2>
+		<p> Neka je $E$ eliptička krivulja nad $\mathbb{Q}$ definirana jednadžbom $y^2=x^3+ax+b$, gdje su $a,b\in \mathbb{Z}$.
+		Za prost broj $p>3$ možemo promatrati jednadžbu $y^2=x^3+ax+b \,(\text{mod }p)$. Ako je tom jednadžbom definirana 
+		eliptička krivulja nad konačnim poljem $\mathbb{F}_p=\{0,1,2,...,p-1\}$, onda kažemo da $E$ ima dobru redukciju modulo $p$. 
+		Inače, kažemo da ima lošu redukciju modulo $p$. Vrijedi ako $p \nmid \Delta$ onda je redukcija modulo $p$ dobra. 
+		Obrat općenito ne vrijedi, tj. redukcija može biti dobra iako je $\Delta=kp$, $k \in \mathbb{Z}$.</p>
+	</div> 
+	<br>
+	<h2 id="contact"> Kontakt </h2>
+	
+	<div class="contact_form">
+	<form>
+		<label for="name">Ime i Prezime</label>
+		<input type="text" id="name" name="name" placeholder="Vaše ime i prezime...">
+
+    <label for="zanimanje">Zanimanje</label>
+    <select id="zanimanje" name="zanimanje">
+      <option value="student">Student</option>
+      <option value="asistent">Asistent</option>
+      <option value="profesor">Prof. dr. sc.</option>
+    </select>
+
+    <label for="poruka">Poruka</label>
+    <textarea id="poruka" name="Poruka" placeholder="Tekst poruke..." style="height:150px"></textarea>
+
+    <button onclick="send()"> Pošalji!</button>
+  </form>
+</div>
+	</div>
+	</body>
+</html>
